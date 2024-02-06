@@ -70,6 +70,10 @@
 # Delete existing data, so you'll start fresh each time this script is run.
 # Use `Model.destroy_all` code.
 # TODO!
+Studio.destroy_all
+Movie.destroy_all
+Actor.destroy_all
+Role.destroy_all
 
 # Generate models and tables, according to the domain model.
 # TODO!
@@ -77,6 +81,81 @@
 # Insert data into the database that reflects the sample data shown above.
 # Do not use hard-coded foreign key IDs.
 # TODO!
+
+# insert data into studios table
+studio = Studio.new
+studio["name"] = "Warner Bros."
+studio.save
+
+# insert data into movies table
+warner = Studio.find_by({"name" => "Warner Bros."})
+
+movie = Movie.new
+movie["title"] = "Batman Begins"
+movie["year_released"] = 2005
+movie["rated"] = "PG-13"
+movie["studio_id"] = warner["id"]
+movie.save
+
+movie = Movie.new
+movie["title"] = "The Dark Knight"
+movie["year_released"] = 2008
+movie["rated"] = "PG-13"
+movie["studio_id"] = warner["id"]
+movie.save
+
+movie = Movie.new
+movie["title"] = "The Dark Knight Rises"
+movie["year_released"] = 2012
+movie["rated"] = "PG-13"
+movie["studio_id"] = warner["id"]
+movie.save
+
+
+# insert data into actors table
+actor_list = ["Christian Bale", "Michael Caine", "Liam Neeson", 
+"Katie Holmes","Gary Oldman","Heath Ledger","Aaron Eckhart",
+"Maggie Gyllenhaal","Tom Hardy","Joseph Gordon-Levitt","Anne Hathaway"]
+
+for actor in actor_list
+    actor_new = Actor.new
+    actor_new["name"] = actor
+    actor_new.save
+end
+
+# insert data into roles table
+
+# Batman Begins
+actors_bb = ["Christian Bale", "Michael Caine", "Liam Neeson", 
+"Katie Holmes","Gary Oldman"]
+
+roles_bb = ["Bruce Wayne","Alfred","Ra's Al Ghul","Rachel Dawes",
+"Commissioner Gordon"]
+index = 0
+for actor in actors_bb
+    role_new = Role.new
+    role_new["movie_id"] = Movie.find_by({"title" => "Batman Begins"})["id"]
+    role_new["actor_id"] = Actor.find_by({"name" => actor})["id"]
+    role_new["character_name"] = roles_bb[index]
+    role_new.save
+    index = index + 1
+end    
+
+# Dark Knight
+actors_dk = ["Christian Bale", "Heath Ledger", "Aaron Eckhart", 
+"Michael Caine","Maggie Gyllenhaal"]
+
+roles_bb = ["Bruce Wayne","Alfred","Ra's Al Ghul","Rachel Dawes",
+"Commissioner Gordon"]
+index = 0
+for actor in actors_bb
+    role_new = Role.new
+    role_new["movie_id"] = Movie.find_by({"title" => "Batman Begins"})["id"]
+    role_new["actor_id"] = Actor.find_by({"name" => actor})["id"]
+    role_new["character_name"] = roles_bb[index]
+    role_new.save
+    index = index + 1
+end    
 
 # Prints a header for the movies output
 puts "Movies"

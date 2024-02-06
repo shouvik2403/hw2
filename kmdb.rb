@@ -82,12 +82,12 @@ Role.destroy_all
 # Do not use hard-coded foreign key IDs.
 # TODO!
 
-# insert data into studios table
+# - insert data into studios table
 studio = Studio.new
 studio["name"] = "Warner Bros."
 studio.save
 
-# insert data into movies table
+# - insert data into movies table
 warner = Studio.find_by({"name" => "Warner Bros."})
 
 movie = Movie.new
@@ -112,7 +112,7 @@ movie["studio_id"] = warner["id"]
 movie.save
 
 
-# insert data into actors table
+# - insert data into actors table
 actor_list = ["Christian Bale", "Michael Caine", "Liam Neeson", 
 "Katie Holmes","Gary Oldman","Heath Ledger","Aaron Eckhart",
 "Maggie Gyllenhaal","Tom Hardy","Joseph Gordon-Levitt","Anne Hathaway"]
@@ -123,9 +123,9 @@ for actor in actor_list
     actor_new.save
 end
 
-# insert data into roles table
+# - insert data into roles table
 
-# Batman Begins
+# -- Batman Begins
 actors = ["Christian Bale", "Michael Caine", "Liam Neeson", 
 "Katie Holmes","Gary Oldman"]
 
@@ -141,7 +141,7 @@ for actor in actors
     index = index + 1
 end    
 
-# The Dark Knight
+# -- The Dark Knight
 actors = ["Christian Bale", "Heath Ledger", "Aaron Eckhart", 
 "Michael Caine","Maggie Gyllenhaal"]
 
@@ -157,7 +157,7 @@ for actor in actors
     index = index + 1
 end    
 
-# The Dark Knight Rises
+# -- The Dark Knight Rises
 actors = ["Christian Bale", "Gary Oldman", "Tom Hardy", 
 "Joseph Gordon-Levitt","Anne Hathaway"]
 

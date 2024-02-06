@@ -126,33 +126,49 @@ end
 # insert data into roles table
 
 # Batman Begins
-actors_bb = ["Christian Bale", "Michael Caine", "Liam Neeson", 
+actors = ["Christian Bale", "Michael Caine", "Liam Neeson", 
 "Katie Holmes","Gary Oldman"]
 
-roles_bb = ["Bruce Wayne","Alfred","Ra's Al Ghul","Rachel Dawes",
+roles = ["Bruce Wayne","Alfred","Ra's Al Ghul","Rachel Dawes",
 "Commissioner Gordon"]
 index = 0
-for actor in actors_bb
+for actor in actors
     role_new = Role.new
     role_new["movie_id"] = Movie.find_by({"title" => "Batman Begins"})["id"]
     role_new["actor_id"] = Actor.find_by({"name" => actor})["id"]
-    role_new["character_name"] = roles_bb[index]
+    role_new["character_name"] = roles[index]
     role_new.save
     index = index + 1
 end    
 
-# Dark Knight
-actors_dk = ["Christian Bale", "Heath Ledger", "Aaron Eckhart", 
+# The Dark Knight
+actors = ["Christian Bale", "Heath Ledger", "Aaron Eckhart", 
 "Michael Caine","Maggie Gyllenhaal"]
 
-roles_bb = ["Bruce Wayne","Alfred","Ra's Al Ghul","Rachel Dawes",
-"Commissioner Gordon"]
+roles = ["Bruce Wayne","Joker","Harvey Dent","Alfred",
+"Rachel Dawes"]
 index = 0
-for actor in actors_bb
+for actor in actors
     role_new = Role.new
-    role_new["movie_id"] = Movie.find_by({"title" => "Batman Begins"})["id"]
+    role_new["movie_id"] = Movie.find_by({"title" => "The Dark Knight"})["id"]
     role_new["actor_id"] = Actor.find_by({"name" => actor})["id"]
-    role_new["character_name"] = roles_bb[index]
+    role_new["character_name"] = roles[index]
+    role_new.save
+    index = index + 1
+end    
+
+# The Dark Knight Rises
+actors = ["Christian Bale", "Gary Oldman", "Tom Hardy", 
+"Joseph Gordon-Levitt","Anne Hathaway"]
+
+roles = ["Bruce Wayne","Commissioner Gordon","Bane","John Blake",
+"Selina Kyle"]
+index = 0
+for actor in actors
+    role_new = Role.new
+    role_new["movie_id"] = Movie.find_by({"title" => "The Dark Knight Rises"})["id"]
+    role_new["actor_id"] = Actor.find_by({"name" => actor})["id"]
+    role_new["character_name"] = roles[index]
     role_new.save
     index = index + 1
 end    
@@ -164,6 +180,11 @@ puts ""
 
 # Query the movies data and loop through the results to display the movies output.
 # TODO!
+movie_list = Movie.all
+for movie in movie_list
+    
+end
+
 
 # Prints a header for the cast output
 puts ""

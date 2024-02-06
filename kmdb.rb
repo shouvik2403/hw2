@@ -181,6 +181,7 @@ puts ""
 # Query the movies data and loop through the results to display the movies output.
 # TODO!
 movie_list = Movie.all
+
 for movie in movie_list
     title = movie["title"]
     year = movie["year_released"]
@@ -199,6 +200,7 @@ puts ""
 # Query the cast data and loop through the results to display the cast output for each movie.
 # TODO!
 role_list = Role.all
+
 for role in role_list
     movie = Movie.find_by({"id" => role["movie_id"]})["title"]
     actor = Actor.find_by({"id" => role["actor_id"]})["name"]
